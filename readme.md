@@ -8,3 +8,9 @@ I said this was a WIP. You're a rebel. I like it. Run `npm install --save hook-m
 ```
 "scaffold": "npm explore hook-module-compose -- npm run scaffold"
 ```
+
+## Usage
+
+```
+npm --name=YourShittyComponentName run scaffold
+```
