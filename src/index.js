@@ -1,5 +1,5 @@
 
-const fs = require('fs');
+import { addDir, addAsset } from './asset';
 
 const configName = process.env.npm_config_name || 'Component';
 const name = configName.split(' ').join('');
@@ -12,9 +12,16 @@ const css = `
 
 const js = `
     import React from 'react';
+    import style from './style.module.css';
     
     const ${name} = props => {
-        
+
+        return (
+            <div className={style.${name}}>
+                
+            </div>
+        );
+
     };
 
     export default ${name};
@@ -22,27 +29,14 @@ const js = `
 
 const run = async () => {
     try {
+        await addDir(name);
         await addAsset(name, 'index.js', js);
         await addAsset(name, 'style.module.css', css); 
+
+        console.log(`Added ${name} component to src/components`);
     } catch (e) {
         throw e;
     }
 };
 
 run();
-
-// MARK: Utils
-
-const addAsset = (componentName, assetName, content) => new Promise((resolve, reject) => {
-    const path = `./src/components/${componentName}/${assetName}`;
-
-    fs.writeFile(path, content, error => {
-        if (error) {
-            const error = new Error('Could not add asset file: ' + path);
-            error.code = 'write-file-error';
-            return reject(error);
-        }
-        
-        resolve(path);
-    });
-});
