@@ -16,7 +16,7 @@ fs.readdirSync('node_modules').filter((nodeModuleDir) => {
 });
 
 const config = {
-    entry: './src/index',
+    entry: ['regenerator-runtime/runtime', './src/index'],
     target: 'node',
     output: { path: __dirname + '/dist', filename: 'index.js' },
     module: { rules: [js] },

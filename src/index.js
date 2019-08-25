@@ -1,17 +1,20 @@
 
 const fs = require('fs');
 
-const name = process.argv;
+const configName = process.env.npm_config_name || 'Component';
+const name = configName.split(' ').join('');
 
-const css = `.${name} {
-    
-}`;
+const css = `
+    .${name} {
+
+    }
+`;
 
 const js = `
     import React from 'react';
     
     const ${name} = props => {
-
+        
     };
 
     export default ${name};
