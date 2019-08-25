@@ -1,0 +1,25 @@
+{
+  "name": "hook-module-compose",
+  "version": "0.1.0",
+  "description": "Total WIP don't use this",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GabeTheCoder/hook-module-compose"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack -d",
+    "build": "webpack -p && cp package.json dist",
+    "publish-build": "cd dist && npm publish"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.4"
+  }
+}
