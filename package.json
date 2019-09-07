@@ -11,8 +11,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -d",
     "build": "webpack -p && cp package.json dist",
-    "publish-build": "cd dist && npm publish",
-    "scaffold": "cd ../../ && node node_modules/hook-module-compose/index.js"
+    "publish-build": "cd dist && npm publish"
+  },
+  "bin": {
+    "hook-module-compose":"node index.js"
   },
   "author": "",
   "license": "ISC",
