@@ -1,37 +1,40 @@
 
+import readline from 'readline';
 import { addDir, addAsset } from './asset';
 
-const configName = process.env.npm_config_name || 'Component';
-const name = configName.split(' ').join('');
-
-const css = `
-    .${name} {
-
-    }
-`;
-
-const js = `
-    import React from 'react';
-    import style from './style.module.css';
+const css = name => `
+.${name} {
     
-    const ${name} = props => {
-
-        return (
-            <div className={style.${name}}>
-                
-            </div>
-        );
-
-    };
-
-    export default ${name};
+}
 `;
 
-const run = async () => {
+const js = name => `
+import React from 'react';
+import style from './style.module.css';
+
+const ${name} = props => {
+
+    return (
+        <div className={style.${name}}>
+            
+        </div>
+    );
+
+};
+
+export default ${name};
+`;
+
+const cli = readline.createInterface({ 
+    input: process.stdin,
+    output: process.stdout
+});
+
+const run = async name => {
     try {
         await addDir(name);
-        await addAsset(name, 'index.js', js);
-        await addAsset(name, 'style.module.css', css); 
+        await addAsset(name, 'index.js', js(name));
+        await addAsset(name, 'style.module.css', css(name)); 
 
         console.log(`Added ${name} component to src/components`);
     } catch (e) {
@@ -39,4 +42,7 @@ const run = async () => {
     }
 };
 
-run();
+cli.question('Component Name: ', name => {
+    run(name);
+    cli.close();
+});
