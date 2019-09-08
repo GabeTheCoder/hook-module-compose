@@ -14,9 +14,6 @@
     "publish-build": "cd dist && npm publish",
     "scaffold": "cd ../../ && node node_modules/hook-module-compose/index.js"
   },
-  "bin": {
-    "hook-module-compose":"node index.js"
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
