@@ -11,7 +11,7 @@ I said this was a WIP. You're a rebel. I like it. Run `npm install --save hook-m
 
 ## Usage
 
-Pretty much this only works if your app is structured with an src/components directory.
+Pretty much this only works if your app is structured with a `src/components` directory.
 
 ```
 npm run scaffold
