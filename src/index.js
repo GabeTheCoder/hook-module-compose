@@ -1,5 +1,5 @@
 
-import readline from 'readline';
+import { ask } from './cli';
 import { addDir, addAsset } from './asset';
 
 const css = name => `
@@ -25,12 +25,9 @@ const ${name} = props => {
 export default ${name};
 `;
 
-const cli = readline.createInterface({ 
-    input: process.stdin,
-    output: process.stdout
-});
-
-const run = async name => {
+const run = async () => {
+    const name = await ask('Component Name: ');
+    
     try {
         await addDir(name);
         await addAsset(name, 'index.js', js(name));
@@ -42,7 +39,4 @@ const run = async name => {
     }
 };
 
-cli.question('Component Name: ', name => {
-    run(name);
-    cli.close();
-});
+run();
