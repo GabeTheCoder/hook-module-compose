@@ -6,7 +6,7 @@ const cli = readline.createInterface({
     output: process.stdout
 });
 
-export const ask = prompt => new Promise((resolve, reject) => {
+export const ask = prompt => new Promise(resolve => {
     cli.question(prompt, input => {
         resolve(input);
         cli.close();

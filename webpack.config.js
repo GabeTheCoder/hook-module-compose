@@ -24,4 +24,13 @@ const config = {
     externals: nodeModules
 };
 
-module.exports = [config];
+const context = {
+    entry: ['regenerator-runtime/runtime', './src/context'],
+    target: 'node',
+    output: { path: __dirname + '/dist', filename: 'context.js' },
+    module: { rules: [js] },
+    stats: { children: false },
+    externals: nodeModules
+};
+
+module.exports = [config, context];

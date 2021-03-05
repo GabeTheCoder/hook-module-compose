@@ -9,20 +9,11 @@ const css = name => `
 `;
 
 const js = name => `
-import React from 'react';
-import style from './style.module.css';
-
-const ${name} = props => {
-
-    return (
-        <div className={style.${name}}>
-            
-        </div>
-    );
-
-};
-
-export default ${name};
+export default props => (
+    <div className={style.${name}}>
+        
+    </div>
+);
 `;
 
 const run = async () => {

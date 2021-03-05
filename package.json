@@ -1,6 +1,6 @@
 {
   "name": "hook-module-compose",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Total WIP maybe don't use this",
   "main": "index.js",
   "repository": {
